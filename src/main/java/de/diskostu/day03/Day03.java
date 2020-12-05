@@ -10,9 +10,6 @@ public class Day03 {
     private final List<String> rows;
 
     private final static char TREE = '#';
-    private final static int MOVE_X = 3;
-
-
 
 
     public Day03(InputSupplier inputSupplier) {
@@ -21,22 +18,37 @@ public class Day03 {
     }
 
 
-    public long getTreeCount() {
+    public long getTreeCount(int moveX, int moveY) {
         int treeCount = 0;
         int xPos = 0;
         final int rowLength = rows.get(0).length();
 
-        for (final String row : rows) {
-            if (row.charAt(xPos) == TREE) {
+        for (int i = 0; i < rows.size(); i += moveY) {
+            if (rows.get(i).charAt(xPos) == TREE) {
                 treeCount++;
             }
 
-            xPos += MOVE_X;
+            xPos += moveX;
             if (xPos > (rowLength - 1)) {
                 xPos = xPos - rowLength;
             }
         }
 
         return treeCount;
+    }
+
+
+    public long getResultForMultipleSlopes(List<int[]> slopeMoves) {
+        long result = 0;
+
+        for (int[] slopeMove : slopeMoves) {
+            final int moveX = slopeMove[0];
+            final int moveY = slopeMove[1];
+            final long treeCount = getTreeCount(moveX, moveY);
+
+            result = result == 0 ? treeCount : result * treeCount;
+        }
+
+        return result;
     }
 }
