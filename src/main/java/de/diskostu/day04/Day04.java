@@ -82,7 +82,7 @@ public class Day04 {
         final Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 
         return passports.stream()
-                        .filter(s -> validator.validate(s).isEmpty())
+                        .filter(passport -> validator.validate(passport).isEmpty())
                         .count();
     }
 }

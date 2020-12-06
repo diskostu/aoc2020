@@ -5,6 +5,7 @@ import de.diskostu.util.InputSupplier;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -30,6 +31,13 @@ class Day05Test {
         inputReal = new InputFileSupplier("in/day05.txt").get();
     }
 
+
+    @Test
+    public void testMethod() {
+        final Day05 sut = new Day05(new InputSupplier(() -> inputReal));
+
+        Assertions.assertEquals(557, sut.findMySeat());
+    }
 
     @ParameterizedTest
     @MethodSource("provideInputAndExpectedResultHighestSeatId")

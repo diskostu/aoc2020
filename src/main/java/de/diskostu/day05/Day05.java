@@ -21,6 +21,36 @@ public class Day05 {
     }
 
 
+    int findMySeat() {
+        final String occupied = "X";
+        final String[][] seatArray = new String[128][8];
+
+        for (final String seatCode : seatCodes) {
+            final Seat seat = calculateSeatCoordinates(seatCode);
+            seatArray[seat.getRow()][seat.getColumn()] = occupied;
+        }
+
+        // we know:
+        // 1) in the front and in the back, seats are not occupied
+        // 2) one seat in between is not occupied
+        // so we need to find the first empty seat after a bunch of occupied seats
+
+        boolean occupiedSeatFound = false;
+        for (int row = 0; row < seatArray.length; row++) {
+            for (int col = 0; col < seatArray[row].length; col++) {
+                final String currentSeatStatus = seatArray[row][col];
+                if (occupied.equals(currentSeatStatus)) {
+                    occupiedSeatFound = true;
+                }
+                if (occupiedSeatFound && currentSeatStatus == null) {
+                    return calculateSeatId(new Seat(row, col));
+                }
+            }
+        }
+
+        return -1;
+    }
+
     int calculateHighestSeatId() {
         int highestSeatId = -1;
 
@@ -74,8 +104,6 @@ public class Day05 {
                 case 'H' -> currentMin = currentMin + ((currentMax - currentMin - 1) / 2) + 1;
                 default -> throw new IllegalStateException("unknown char: " + currentChar);
             }
-
-            log.info("char is " + currentChar + ". new min is " + currentMin + ", new max is " + currentMax);
         }
 
         if (currentMin != currentMax) {
