@@ -1,3 +1,5 @@
+![CI](https://github.com/diskostu/aoc2020/workflows/CI/badge.svg)
+
 # advent of code 2020
 
 - [advent of code](https://adventofcode.com/)
