@@ -6,8 +6,9 @@
                 pattern="%d [%t] %-5level %logger{36} - %msg%n%throwable"/>
         </Console>
     </Appenders>
+
     <Loggers>
-        <Root level="DEBUG">
+        <Root level="DEBUG" additivity="false">
             <AppenderRef ref="ConsoleAppender"/>
         </Root>
     </Loggers>
