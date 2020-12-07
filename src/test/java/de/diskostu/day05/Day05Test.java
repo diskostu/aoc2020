@@ -33,7 +33,7 @@ class Day05Test {
 
 
     @Test
-    public void testMethod() {
+    public void testFindMySeat() {
         final Day05 sut = new Day05(new InputSupplier(() -> inputReal));
 
         Assertions.assertEquals(557, sut.findMySeat());
