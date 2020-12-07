@@ -1,25 +1,26 @@
 package de.diskostu.day06;
 
 import de.diskostu.util.InputSupplier;
+import lombok.extern.log4j.Log4j2;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 import java.util.stream.Collectors;
 
-public class Day06 {
+@Log4j2
+public class Day06Part1 extends Day06Abstract {
 
     private final List<String> answers;
 
 
-    public Day06(InputSupplier inputSupplier) {
+    public Day06Part1(InputSupplier inputSupplier) {
         answers = inputSupplier.get()
                                .collect(Collectors.toList());
     }
 
 
-    public long calculateSums() {
+    public long calculateSumsPart1() {
         return getSum(collectUniqueGroupAnswers());
     }
 
@@ -45,13 +46,6 @@ public class Day06 {
         }
 
         return uniqueAnswers;
-    }
-
-
-    private Set<Character> createUniqueCharSetFromString(final String s) {
-        return s.chars()
-                .mapToObj(c -> (char) c)
-                .collect(Collectors.toCollection(TreeSet::new));
     }
 
 
