@@ -21,6 +21,7 @@ class Day08Test {
     @BeforeAll
     private static void init() {
         // part 1: 5
+        // part 1: 8
         inputDummyPart1 = """
             nop +0
             acc +1
@@ -46,10 +47,27 @@ class Day08Test {
     }
 
 
+    @ParameterizedTest
+    @MethodSource("provideInputAndExpectedResultPart2")
+    public void testCalculateSumsPart2(final String input, final int expectedId) {
+        final Day08 sut = new Day08(new InputSupplier(() -> input));
+
+        Assertions.assertEquals(expectedId, sut.calculateSumPart2());
+    }
+
+
     private static Stream<Arguments> provideInputAndExpectedResultPart1() {
         return Stream.of(
             Arguments.of(inputDummyPart1, 5),
             Arguments.of(inputReal, 1475)
+        );
+    }
+
+
+    private static Stream<Arguments> provideInputAndExpectedResultPart2() {
+        return Stream.of(
+            Arguments.of(inputDummyPart1, 8),
+            Arguments.of(inputReal, 1270)
         );
     }
 }
