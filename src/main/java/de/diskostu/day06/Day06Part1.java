@@ -50,12 +50,6 @@ public class Day06Part1 extends Day06Abstract {
 
 
     long getSum(List<Set<Character>> uniqueAnswers) {
-        int sum = 0;
-
-        for (Set<Character> uniqueAnswer : uniqueAnswers) {
-            sum += uniqueAnswer.size();
-        }
-
-        return sum;
+        return uniqueAnswers.stream().mapToInt(p -> p.size()).sum();
     }
 }
