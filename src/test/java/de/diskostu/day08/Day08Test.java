@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 @DisplayName("Day 08")
 class Day08Test {
 
-    private static String inputDummyPart1;
+    private static String inputDummy;
     private static String inputReal;
 
 
@@ -22,7 +22,7 @@ class Day08Test {
     private static void init() {
         // part 1: 5
         // part 1: 8
-        inputDummyPart1 = """
+        inputDummy = """
             nop +0
             acc +1
             jmp +4
@@ -58,7 +58,7 @@ class Day08Test {
 
     private static Stream<Arguments> provideInputAndExpectedResultPart1() {
         return Stream.of(
-            Arguments.of(inputDummyPart1, 5),
+            Arguments.of(inputDummy, 5),
             Arguments.of(inputReal, 1475)
         );
     }
@@ -66,7 +66,7 @@ class Day08Test {
 
     private static Stream<Arguments> provideInputAndExpectedResultPart2() {
         return Stream.of(
-            Arguments.of(inputDummyPart1, 8),
+            Arguments.of(inputDummy, 8),
             Arguments.of(inputReal, 1270)
         );
     }
